@@ -1,13 +1,29 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
-# Create your views here.
+# Dummy list of dictionaries
+posts = [
+    {
+        'author': 'CFD',
+        'title': 'Blog Post 1',
+        'content': 'Content for blog post 1',
+        'date_posted': 'September 1st 2022',
+    },
+    {
+        'author': 'John Doe',
+        'title': 'Blog Post 2',
+        'content': 'Content for blog post 2',
+        'date_posted': 'September 2nd 2022',
+    }
+]
 
 
-# This isn't used as the home landing page is the Blog page
 def home(request):
-    return render(request, 'blog/home.html')
+    context = {
+        'posts': posts
+    }
+    return render(request, 'blog/home.html', context)
 
 
 def about(request):
-    return render(request, 'blog/about.html')
+    return render(request, 'blog/about.html', {'title': 'About Title'})
