@@ -1,13 +1,13 @@
 from django.shortcuts import render
-from django.http import HttpResponse
-
-# Create your views here.
+from .models import Post
 
 
-# This isn't used as the home landing page is the Blog page
 def home(request):
-    return render(request, 'blog/home.html')
+    context = {
+        'posts': Post.objects.all()
+    }
+    return render(request, 'blog/home.html', context)
 
 
 def about(request):
-    return render(request, 'blog/about.html')
+    return render(request, 'blog/about.html', {'title': 'About Title'})

@@ -25,7 +25,14 @@ SECRET_KEY = 'django-insecure-=(df$p@+*gz^iik@#-_2&00gs2i7#gnj#=_#1dwdx669=u7cb*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+]
+
+# Helps prevent getting the CSRF error during development.
+# Taken from https://github.com/adamchainz/django-cors-headers
+CSRF_TRUSTED_ORIGINS = [
+    'https://8000-cathaldolan-coreyblog-rxznrarw3kf.ws-eu63.gitpod.io',
+]
 
 
 # Application definition
