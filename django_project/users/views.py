@@ -12,8 +12,8 @@ def register(request):
             username = form.cleaned_data.get('username')
             # The "success" tag is imported into base.html in the messages class
             # f string used to add the message text content in this case
-            messages.success(request, f'Account created for {username}!')
-            return redirect('blog-home')
+            messages.success(request, f'Account created for {username}! You can now log in.')
+            return redirect('login')
     else:
         form = UserRegisterForm()
     return render(request, 'users/register.html', {'form': form})
