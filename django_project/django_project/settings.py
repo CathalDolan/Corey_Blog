@@ -136,6 +136,10 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Ensures Crispy Forms uses BS5 for styling. Doesn't work...
 # CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
-# This is what redirects the user to the hoimepage when they login,
+# This is what redirects the user to the homepage when they login,
 # instead of Django's default user "profile" page
 LOGIN_REDIRECT_URL = 'blog-home'
+
+# This is what redirects the user to the login page if they 
+# try to access a profile without being logged in
+LOGIN_URL = 'login'

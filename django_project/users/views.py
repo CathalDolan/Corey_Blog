@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .forms import UserRegisterForm
+from django.contrib.auth.decorators import login_required
 
 
 def register(request):
@@ -18,6 +19,7 @@ def register(request):
         form = UserRegisterForm()
     return render(request, 'users/register.html', {'form': form})
 
-
+# Login Required is a decorator to ensure the User can't access profile page without being logged in
+@login_required
 def profile(request):
     return render(request, 'users/profile.html')
