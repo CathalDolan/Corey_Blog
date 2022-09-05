@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import (
     ListView,
     DetailView,
@@ -21,7 +22,8 @@ class PostListView(ListView):
     model = Post
     template_name = 'blog/home.html'  # Convention: <app name>/<model name>_<viewtype>.html
     context_object_name = 'posts'
-    # Puts the list of blogs in order. Adding the - sign, displays newest to oldest (as opposed to the default which is the opposite)
+    # Puts the list of blogs in order. Adding the - sign, displays newest
+    # to oldest (as opposed to the default which is the opposite)
     ordering = ['-date_posted']
 
 
@@ -29,7 +31,7 @@ class PostDetailView(DetailView):
     model = Post
 
 
-class PostCreateView(CreateView):
+class PostCreateView(LoginRequiredMixin, CreateView):
     model = Post
     fields = ['title', 'content']
 
