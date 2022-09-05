@@ -33,7 +33,7 @@ class PostCreateView(CreateView):
     model = Post
     fields = ['title', 'content']
 
-    # This method overrides default form valid method so that we 
+    # This method overrides default form valid method so that we
     # can add the author before the form is submitted.
     def form_valid(self, form):
         # Before the form is submitted get the name of the User
