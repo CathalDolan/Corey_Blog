@@ -23,8 +23,9 @@ def register(request):
 # Login Required is a decorator to ensure the User can't access profile page without being logged in
 @login_required
 def profile(request):
-    u_form = UserUpdateForm()
-    p_form = ProfileUpdateForm()
+    # Adding the Instances populates the form with current data as opposed to the fields being blank.
+    u_form = UserUpdateForm(instance=request.user)
+    p_form = ProfileUpdateForm(instance=request.user.profile)
 
     context = {
         'u_form': u_form,
