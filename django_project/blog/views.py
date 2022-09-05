@@ -27,6 +27,7 @@ class PostListView(ListView):
     # Puts the list of blogs in order. Adding the - sign, displays newest
     # to oldest (as opposed to the default which is the opposite)
     ordering = ['-date_posted']
+    paginate_by = 2
 
 
 class PostDetailView(DetailView):
