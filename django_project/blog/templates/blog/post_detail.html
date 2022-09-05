@@ -1,0 +1,22 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+    <h1>Blog Post!</h1>
+
+    <article class="media content-section">
+        <div class="row">
+            <div class="col-3">
+                <img class="rounded-circle article-img" src="{{ object.author.profile.image.url }}">
+            </div>
+            <div class="media-body col-9">
+                <div class="article-metadata">
+                    <a class="mr-2" href="#">{{ object.author }}</a>
+                    <small class="text-muted">{{ object.date_posted|date:"F d, Y" }}</small> <!-- Date filters: https://docs.djangoproject.com/en/2.0/ref/templates/builtins/#date -->
+                </div>
+                <h2 class="article-title">{{ object.title }}</h2>
+                <p class="article-content">{{ object.content }}</p>
+            </div>
+        </div>
+    </article>
+    
+{% endblock content %}
