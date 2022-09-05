@@ -39,14 +39,15 @@
                             <a class="nav-link" href="{% url 'blog-about' %}">About</a>
                         </li>
                     </ul>
-                    <ul class="navbar-nav d-flex">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Register</a>
-                        </li>
-                    </ul>
+                    <div class="navbar-nav d-flex">
+                        {% if user.is_authenticated %}
+                            <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+                            <a class="nav-link" href="{% url 'logout' %}">Logout</a>
+                        {% else %}
+                            <a class="nav-link" href="{% url 'login' %}">Login</a>
+                            <a class="nav-link" href="{% url 'register' %}">Register</a>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
         </nav>
@@ -55,8 +56,21 @@
     <main role="main" class="container">
         <div class="row">
 
+            
+            <div class="col-md-8">
+                
+            </div>
             <!-- Block Content Div -->
             <div class="col-md-8">
+                <!-- Flash Messages Location -->
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
                 {% block content %}
                 {% endblock %}
             </div>
