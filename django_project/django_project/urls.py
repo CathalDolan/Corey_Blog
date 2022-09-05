@@ -18,6 +18,8 @@ from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import path, include
 from users import views as user_views
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,5 +27,13 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
     path('profile/', user_views.profile, name='profile'),
-    path('', include('blog.urls')), # The route is left empty, thus making it the home landing page
+    path('', include('blog.urls')),  # The route is left empty, thus making it the home landing page
 ]
+
+
+# Media root as per settings is for development only. The code below is a variation
+# of the snippet taken from Django Docs "Serving files uploaded by a User during Development"
+# https://docs.djangoproject.com/en/4.1/howto/static-files/ This is as an alternative to
+# having +static(settings.Medi_URL,...) tagged on after the closing bracket in urlpatterns
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
