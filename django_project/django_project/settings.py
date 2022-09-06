@@ -146,6 +146,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # instead of Django's default user "profile" page
 LOGIN_REDIRECT_URL = 'blog-home'
 
-# This is what redirects the user to the login page if they 
+# This is what redirects the user to the login page if they
 # try to access a profile without being logged in
 LOGIN_URL = 'login'
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
