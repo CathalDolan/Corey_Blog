@@ -12,8 +12,8 @@ class Profile(models.Model):
 
     # This method runs after the model is saved
     # It reduces the size of an uploaded image
-    def save(self):
-        super().save()
+    def save(self, *args, **kwargs):
+        super().save(*args, **kwargs)
 
         img = Image.open(self.image.path)
 

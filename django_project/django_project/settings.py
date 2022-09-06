@@ -150,6 +150,7 @@ LOGIN_REDIRECT_URL = 'blog-home'
 # try to access a profile without being logged in
 LOGIN_URL = 'login'
 
+# For sending email
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
